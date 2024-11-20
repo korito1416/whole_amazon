@@ -33,6 +33,7 @@ amazon_biome <- amazon_biome %>%
 
 
 
+
 # x_2017
 plot <- ggplot2::ggplot(data = calib_df %>%
   dplyr::mutate(x_2017 = ggplot2::cut_number(round(x_2017 / 1000000), n = 5, dig.lab = 3))) +
@@ -52,7 +53,7 @@ plot <- ggplot2::ggplot(data = calib_df %>%
     legend.text = element_text(size = 20, face = "bold")
   )
 
-ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_x2017_1043Sites.png"), plot = plot, width = 8, height = 6)
+ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_x2017.png"), plot = plot, width = 8, height = 6)
 
 # gamma_fit
 # Define breaks and labels
@@ -89,8 +90,8 @@ ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_gamm
 plot <- ggplot2::ggplot(data = calib_df %>%
                           dplyr::mutate(
                             share_z_2017 = (z_2017 / (zbar_2017)) * 100,
-                            share_z_2017 = cut(round(share_z_2017),
-                                               breaks = c(0, 0.5, 20, 40, 60, 80, 100), include.lowest = T, dig.lab = 3,
+                            share_z_2017 = cut(share_z_2017,
+                                               breaks = c(0, 0.1, 20, 40, 60, 80, 100), include.lowest = T, dig.lab = 3,
                                                labels = c("[0]", "(0-20]", "(20-40]", "(40-60]", "(60-80]", "(80-100]")
                             )
                           )) +
@@ -110,7 +111,7 @@ plot <- ggplot2::ggplot(data = calib_df %>%
     legend.text = element_text(size = 20, face = "bold")
   )
 
-ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_z2017Share_1043Sites.png"), plot = plot, width = 8, height = 6)
+ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_z2017Share.png"), plot = plot, width = 8, height = 6)
 
 
 
