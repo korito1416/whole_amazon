@@ -1,0 +1,23 @@
+1. clean_land_use_cover:
+	pick random sample of 2000 as base
+1_5. clean_for_allyears.R:
+
+2. prep_pixel_sample:
+	get sample from all years
+3. prep_pixel_area:
+	calculate areas
+4. prep_pixel_category:
+	get primary forest type
+5. prep_pixel_biomass.R
+
+
+6.clean_amazon_biome_boundary
+7.prep_rst_biome
+8.prep_rst_land_use
+
+9.calibrate_1043
+10. calibarate_78
+11.site_gamma_reg_1043
+12.gamma_data_scale
+13.gibbs_sampling
+14.amazon_country.R
