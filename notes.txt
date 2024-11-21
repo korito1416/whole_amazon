@@ -22,5 +22,4 @@
 13.gibbs_sampling
 14.amazon_country.R
 
-15.calibration_maps_1043_sites.R
-16.table_intersection.R
+15. prep_gamma_b.R
