@@ -59,6 +59,11 @@ calib_df$tree_richness_ha <- imputed_var
 save(calib_df, file = "data/calibration/calibration_1043_with_biodiversity.Rdata")
 
 
+gamma_b_df <- calib_df %>%
+  select(id,tree_richness_ha)
+
+save(gamma_b_df, file = "data/calibration/gamma_b_df.Rdata")
+
 
 
 
@@ -97,7 +102,7 @@ plot <- ggplot2::ggplot(data = calib_df) +
     legend.text = element_text(size = 20, face = "bold")
   )
 
-ggplot2::ggsave(filename = "plots/calibration/1043SitesModel/map_gamma_b.png", plot = plot, width = 8, height = 6)
+ggplot2::ggsave(filename = "plots/calibration/1043SitesModel/full_amazon_map_gamma_b.png", plot = plot, width = 8, height = 6)
 
 
 

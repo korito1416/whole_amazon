@@ -1,19 +1,26 @@
 
+library(sf)
+library(units)
+library(terra)
+library(readxl)
+library(tidyverse)
+library(tictoc)
+library(conflicted)
 
 # DATA INPUT
 
 
 # 1043 SITES MODEL CALIBRATION VARIABLES
-load(here::here("data/calibration/", "calibration_1043_sites.Rdata"))
+load("data/calibration/calibration_1043_sites.Rdata")
 
 # AMAZON BIOME VECTOR DATA
-load(here::here("data/clean/amazon_biome.Rdata"))
+load("data/clean/amazon_biome.Rdata")
 
-load(here::here("data/clean/amazon_countries.Rdata"))
+load("data/clean/amazon_countries.Rdata")
 
 
 
-gamma_fit <- read.csv(here::here("data/calibration/hmc", "gamma_fit_1043.csv"))%>%
+gamma_fit <- read.csv("data/calibration/hmc/gamma_fit_1043.csv")%>%
   mutate(id = row_number())
 
 calib_df <- calib_df %>%
@@ -53,7 +60,7 @@ plot <- ggplot2::ggplot(data = calib_df %>%
     legend.text = element_text(size = 20, face = "bold")
   )
 
-ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_x2017.png"), plot = plot, width = 8, height = 6)
+ggplot2::ggsave(filename = "plots/calibration/1043SitesModel/full_amazon_map_x2017.png", plot = plot, width = 8, height = 6)
 
 # gamma_fit
 # Define breaks and labels
@@ -83,7 +90,7 @@ plot <- ggplot2::ggplot(data = calib_df) +
     legend.text = element_text(size = 20, face = "bold")
   )
 
-ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_gamma_fit.png"), plot = plot, width = 8, height = 6)
+ggplot2::ggsave(filename = "plots/calibration/1043SitesModel/full_amazon_map_gamma_fit.png", plot = plot, width = 8, height = 6)
 
 
 # share_z_2017
@@ -92,7 +99,7 @@ plot <- ggplot2::ggplot(data = calib_df %>%
                             share_z_2017 = (z_2017 / (zbar_2017)) * 100,
                             share_z_2017 = cut(share_z_2017,
                                                breaks = c(0, 0.1, 20, 40, 60, 80, 100), include.lowest = T, dig.lab = 3,
-                                               labels = c("[0]", "(0-20]", "(20-40]", "(40-60]", "(60-80]", "(80-100]")
+                                               labels = c("[0-0.1]", "(0.1-20]", "(20-40]", "(40-60]", "(60-80]", "(80-100]")
                             )
                           )) +
   ggplot2::geom_sf(aes(fill = share_z_2017)) +
@@ -111,7 +118,7 @@ plot <- ggplot2::ggplot(data = calib_df %>%
     legend.text = element_text(size = 20, face = "bold")
   )
 
-ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_z2017Share.png"), plot = plot, width = 8, height = 6)
+ggplot2::ggsave(filename = "plots/calibration/1043SitesModel/full_amazon_map_z2017Share.png", plot = plot, width = 8, height = 6)
 
 
 
@@ -141,7 +148,7 @@ plot <- ggplot2::ggplot(data = calib_df %>%
     legend.text = element_text(size = 20, face = "bold")
   )
 
-ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/map_z2017_1043Sites.png"), plot = plot, width = 8, height = 6)
+ggplot2::ggsave(filename = here::here("plots/calibration/1043SitesModel/full_amazon_map_z2017_1043Sites.png"), plot = plot, width = 8, height = 6)
 
 
 
